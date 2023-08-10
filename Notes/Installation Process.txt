@@ -1,10 +1,10 @@
 Preparation: Install node.js
 1. check yarn version using cmd/powershell: yarn --version
 2. install yarn using cmd/powershell: npm install --global yarn (if no version is given)
-3. install using powershell: npm i dotenv
+3. install using powershell: yarn add http-server
 this will be added to your current folder:
 		package.json
-		package-lock.json
+		yarn.lock
 
 4. install using cmd: yarn add http-server
 	this will be added to your current folder:
