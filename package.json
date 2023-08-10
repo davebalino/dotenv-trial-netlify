@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "scripts": {
+    "dev": "http-server -p 8080",
+    "netlify": "./node_modules/.bin/netlify"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.11.0"
+  }
+}

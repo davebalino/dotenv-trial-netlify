@@ -1,0 +1,70 @@
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+            apiKey: process.env.API_KEY,
+            authDomain: process.env.AUTH_DOMAIN,
+            projectId: process.env.PROJECT_ID,
+            storageBucket: process.env.STORAGE_BUCKET,
+            messagingSenderId: process.env.MESSAGING_SENDER_ID,
+            appId: process.env.APP_ID
+    };
+
+            const firebaseConfig = {
+            apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+            authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+            projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+            storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+            messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+            appId: import.meta.env.VITE_FIREBASE_APP_ID
+        };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg",
+            authDomain: "eprogress-account-database.firebaseapp.com",
+            projectId: "eprogress-account-database",
+            storageBucket: "eprogress-account-database.appspot.com",
+            messagingSenderId: "72882320286",
+            appId: "1:72882320286:web:822235eb2be05e86b61c8f"
+        };
+
+API_KEY = AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg
+AUTH_DOMAIN = eprogress-account-database.firebaseapp.com
+PROJECT_ID = eprogress-account-database
+STORAGE_BUCKET = eprogress-account-database.appspot.com
+MESSAGING_SENDER_ID = 72882320286
+APP_ID = 1:72882320286:web:822235eb2be05e86b61c8f
+
+    // Load environment variables from .env file
+    const dotenv = await Deno.readTextFile(".env");
+    const envConfig = dotenv.split("\n").reduce((acc, line) => {
+    const [key, value] = line.split("=");
+    acc[key] = value;
+    return acc;
+    }, {});
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: API_KEY,
+        authDomain: AUTH_DOMAIN,
+        projectId: PROJECT_ID,
+        storageBucket: STORAGE_BUCKET,
+        messagingSenderId: MESSAGING_SENDER_ID,
+        appId: APP_ID
+    };
+
+
+
+
+
+>> npm i dotenv
+>> create .env file and add your viriable:
+MY_VAR='VARIABLE FROM .ENV'
+NUMBER=123456789999
+
+>> Example: MY_VAR='VARIABLE FROM .ENV'
+>> add the following to index.js:
+require("dotenv").config();
+
+console.log(process.env.MY_VAR);
+console.log(process.env.NUMBER);
+
+>> node index.js (checking if the .env is ok)

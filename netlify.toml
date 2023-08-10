@@ -1,0 +1,7 @@
+[build]
+  functions = "functions/"
+  publish = "."
+
+[[edge_functions]]
+function = "api-script"
+path = "/test"
