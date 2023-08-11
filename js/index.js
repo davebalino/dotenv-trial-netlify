@@ -1,10 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { createUserWithEmailAndPassword, sendEmailVerification, getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { API_KEY } from './api.js';
 
 // Your web app's Firebase configuration html-10 save 3
 const firebaseConfig = {
-    apiKey: "AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg",
+    apiKey: API_KEY,
     authDomain: "eprogress-account-database.firebaseapp.com",
     projectId: "eprogress-account-database",
     storageBucket: "eprogress-account-database.appspot.com",
