@@ -1,0 +1,20 @@
+cd js
+cd ..
+cd js && echo -e "const API_KEY = 'AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg';\n\nexport default API_KEY;" > test.js
+
+append: cd js && echo -e "\nconst NEW_CODE = 'Your injected code here';" >> testappend
+
+replace: sed -i "s/API_KEY/123456/" index.html
+
+
+
+
+----
+using .env
+node -v
+npm -v
+
+npm init -y
+npm i dotenv express cors
+npm i nodemon -D
+npm i node-fetch
