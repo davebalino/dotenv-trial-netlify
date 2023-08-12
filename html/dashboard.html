@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+</head>
+<body>
+
+<div id="container">
+
+    <div class="menuheader">
+        <nav class="nav">
+            <div class="logo">
+                <h1>Dashboard</h1>
+            </div>
+            <ul class="menu">
+                <li class="nav-item">
+                    <button id="signOutBtn">Sign out</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="main">
+
+    <div class="wrapper">
+        <div class="wrapper-info">
+            <div class="avatar"><img src="../img/avatar.png"></div> <!-- Add your initials or content here -->
+            <h2>My Profile Account</h2>
+            <p>Email: <span id="email"></span></p>
+            <p>Name: <span id="fullname"></span></p>
+            <p>Middle Name: <span id="middlename"></span></p>
+            <p>Phone Number: <span id="phonenumber"></span></p>
+            <div class="buttons">
+                <button id="upDateEmail">Change Email</button>
+                <button id="upDateName">Update Name</button>
+                <button id="upDatePhone">Update Phone</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <footer id="footer" class="footer">
+    <p>Powered by davebalino &copy; 2023</p>
+    </footer>
+</div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg",
+            authDomain: "eprogress-account-database.firebaseapp.com",
+            projectId: "eprogress-account-database",
+            storageBucket: "eprogress-account-database.appspot.com",
+            messagingSenderId: "72882320286",
+            appId: "1:72882320286:web:822235eb2be05e86b61c8f"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the authentication service
+        const auth = getAuth(app);
+
+        // Get a reference to the Firestore instance
+        const db = getFirestore(app);
+
+        // Check if a user is already signed in
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in, update the welcome message
+                document.getElementById("email").textContent = user.displayName; // Display the display name
+                document.getElementById("email").textContent = user.email;
+
+            // Helper function to capitalize all letters of a name
+            const capitalizeAllLetters = (name) => name.trim().toUpperCase();
+
+                // Retrieve additional user data from Firestore
+                const userRef = doc(db, "users", user.uid);
+                const userSnapshot = await getDoc(userRef);
+                if (userSnapshot.exists()) {
+                    const userData = userSnapshot.data();
+                    const firstName = userData.firstname ? capitalizeAllLetters(userData.firstname) : "[N/A]";
+                    const lastName = userData.lastname ? capitalizeAllLetters(userData.lastname) : "";
+                    const middleName = userData.middlename ? capitalizeAllLetters(userData.middlename) : "N/A";
+                    // const userName = userData.username ? userData.username.trim() : "N/A"; // Fetch the username
+
+                    // Merge first name and last name and display
+                    const fullName = `${firstName} ${lastName}`;
+                    document.getElementById("fullname").textContent = fullName || "N/A";
+                    document.getElementById("middlename").textContent = middleName;
+                    document.getElementById("phonenumber").textContent = userData.phonenumber || "N/A";
+                    // document.getElementById("username").textContent = userName; // Set the username
+                } else {
+                    // User data not found in Firestore
+                    document.getElementById("fullname").textContent = "N/A";
+                    document.getElementById("middlename").textContent = "N/A";
+                    document.getElementById("phonenumber").textContent = "N/A";
+                    // document.getElementById("username").textContent = "N/A";
+                }
+            } else {
+                // User is not signed in, redirect to login page
+                window.location.href = "index.html";
+            }
+        });
+
+        document.getElementById("signOutBtn").addEventListener('click', function() {
+            // Sign out the user
+            signOut(auth)
+                .then(() => {
+                    // Successful sign out
+                    window.location.href = "../index.html"; // Redirect to the login page after sign out
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error signing out: " + error.message);
+                });
+        });
+
+        document.getElementById("upDateEmail").addEventListener('click', function() {
+            // Check if the user is authenticated
+            const user = auth.currentUser;
+            if (user) {
+                // User is signed in, redirect to the profile update page
+                window.location.href = "updateemail.html";
+            } else {
+                // User is not signed in, show an alert
+                alert("Please sign in to update your email.");
+            }
+        });
+
+        document.getElementById("upDateName").addEventListener('click', function() {
+            // Check if the user is authenticated
+            const user = auth.currentUser;
+            if (user) {
+                // User is signed in, redirect to the profile update page
+                window.location.href = "updatename.html";
+            } else {
+                // User is not signed in, show an alert
+                alert("Please sign in to update your account information.");
+            }
+        });
+
+        document.getElementById("upDatePhone").addEventListener('click', function() {
+            // Check if the user is authenticated
+            const user = auth.currentUser;
+            if (user) {
+                // User is signed in, redirect to the profile update page
+                window.location.href = "updatephone.html";
+            } else {
+                // User is not signed in, show an alert
+                alert("Please sign in to update your account information.");
+            }
+        });
+    </script>
+</body>
+</html>

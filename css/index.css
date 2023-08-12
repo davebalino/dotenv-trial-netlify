@@ -1,0 +1,155 @@
+/*start main div*/
+#main {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hidden-content {
+  /* display: none; */ /*don't add it here to avoid lag*/
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+.visible-content {
+  opacity: 1;
+  max-height: 800px;
+}
+.text {
+  text-align: center;
+  margin: 0px 20px;
+}
+.text p {
+  text-align: left;
+}
+.text header {
+  color: #2e7eff;
+}
+.text p{
+  max-width: 500px;
+  color: black;
+  line-height: 1.5rem;
+  /* margin-top: 10px; */
+  text-align: justify;
+  text-indent: 40px;
+}
+.text p span {
+  color: #2e7eff;
+}
+#know-more-button {
+  color: #2e7eff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.arrow-down {
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 1px 1px 0px;
+  transform: rotate(45deg);
+  transition: border-width 150ms ease-in-out;
+}
+.arrow-up {
+  box-sizing: border-box;
+  height: 12px;
+  width: 12px;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 1px 1px 0px;
+  transform: rotate(225deg);
+  transition: border-width 150ms ease-in-out;
+}
+.arrow-down:hover, .arrow-up:hover {
+  border-bottom-width: 3px;
+  border-right-width: 3px;
+}
+
+.shortcut {
+  list-style: none;
+}
+.shortcut li a {
+  margin: 20px 10px;
+  color: #2e7eff;
+  border: 1px solid #2e7eff;
+  padding: 5px 10px;
+  padding-bottom: 8px;
+  border-radius: 5px;
+}
+/*end main div*/
+
+/*start - menu*/
+.menuheader {
+  background-color: transparent;
+  border-bottom: 1px solid rgb(184, 184, 184);
+  padding: 5px;
+  font-size: 13px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo h1 {
+  text-decoration: none;
+  margin: 10px 10px;
+  color: #2e7eff;
+}
+.logo h1 span {
+color: #9dc2ff;
+}
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.menu li {
+  margin-right: 10px; /* Adjust the spacing between menu items as desired */
+}
+.menu li button, .menu li a{
+  margin: 0px 5px;
+  padding: 5px 10px;
+  color: #2e7eff;
+  border: none;
+  /* outline: 1px solid #2e7eff; */
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+}
+/*end - menu*/
+
+/*start - footer*/
+html, body {
+  height: 100%;
+} 
+#container {
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+#main {
+  flex: 1;
+  /* overflow: auto; */
+}
+#footer {
+  background-color: transparent;
+  height: 60px;
+  clear: both;
+  text-align: center;
+  border-top: 1px solid rgb(184, 184, 184);
+}
+
+.footer p {
+  padding: 20px 20px;
+  color: #2e7eff;
+  font-size: small;
+  text-align: center;
+}
+/*end - footer*/

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update phone</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/auth.css">
+</head>
+<body>
+    <div class="box">
+        <div class="form">
+            <form id="updateForm">
+                <div class="inputbox">
+                    <input type="text" value="" id="phone">
+                    <span>New phone number</span>
+                </div>
+                <center><input type="submit" value="Update" class="sub" id="update"></center>
+            </form>
+            <br>
+            <center><p><a href="dashboard.html">Return to dashboard</a></p></center>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        import { getFirestore, doc, updateDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg",
+            authDomain: "eprogress-account-database.firebaseapp.com",
+            projectId: "eprogress-account-database",
+            storageBucket: "eprogress-account-database.appspot.com",
+            messagingSenderId: "72882320286",
+            appId: "1:72882320286:web:822235eb2be05e86b61c8f"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // Get a reference to the authentication service
+        const auth = getAuth(app);
+        // Get a reference to the Firestore instance
+        const db = getFirestore(app);
+
+        // Function to check if the user is logged in
+        function checkUserLoggedIn() {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is logged in, proceed with the update
+                    document.getElementById("updateForm").style.display = "block"; // Show the update form
+                } else {
+                    // User is not logged in, redirect to the login page
+                    window.location.href = "login.html";
+                }
+            });
+        }
+
+        // Check if the user is logged in when the script is loaded
+        checkUserLoggedIn();
+
+        document.getElementById("updateForm").addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const phone = document.getElementById("phone").value;
+
+            // Get the current authenticated user
+            const user = auth.currentUser;
+
+            // Create an object to store the data to update
+            const dataToUpdate = {};
+
+            // Check if each field has a value and add it to the dataToUpdate object if not empty
+
+            if (phone.trim() !== "") {
+                dataToUpdate.phonenumber = phone;
+            }
+
+            // Check if there is anything to update
+            if (Object.keys(dataToUpdate).length === 0) {
+                alert("Nothing to update.");
+                return; // Don't proceed with the update if there is nothing to update
+            }
+
+            // Update user data in Firestore using a single call to 'updateDoc'
+            const userRef = doc(db, "users", user.uid);
+
+            updateDoc(userRef, dataToUpdate)
+                .then(() => {
+                    alert("Update successful.");
+
+                    // Redirect to the dashboard page
+                    window.location.href = "dashboard.html";
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Error updating phone number: " + error.message);
+                });
+        });
+    </script>
+</body>
+</html>

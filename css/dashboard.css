@@ -1,0 +1,138 @@
+/*start - menu*/
+.menuheader {
+    background-color: transparent;
+    border-bottom: 1px solid rgb(184, 184, 184);
+    padding: 5px;
+    font-size: 13px;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo h1 {
+    text-decoration: none;
+    margin: 10px 10px;
+    color: #2e7eff;
+}
+.logo h1 span {
+  color: #9dc2ff;
+}
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.menu li {
+    margin-right: 10px; /* Adjust the spacing between menu items as desired */
+}
+.menu li button, .menu li a{
+    margin: 0px 5px;
+    padding: 5px 10px;
+    color: #2e7eff;
+    border: none;
+    outline: 1px solid #2e7eff;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
+}
+/*end - menu*/
+
+
+/*start main div*/
+#main .wrapper {
+  margin: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main .wrapper .wrapper-info {
+  color: black;
+  padding: 30px 30px;
+  border: 1px solid #2e7eff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* Add the shadow style here */
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #2e7eff; /* Add your desired background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #fff; /* Add your desired text color */
+  margin: 0 auto 20px; /* Adjust the margin as needed */
+}
+#main .wrapper .wrapper-info .avatar img{
+  width: 50px;
+}
+#main .wrapper .wrapper-info h2{
+  margin: 15px auto;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main .wrapper .wrapper-info p{
+  line-height: 2rem;
+}
+#main .wrapper .wrapper-info p span{
+  font-weight: bold;
+}
+#main .buttons{
+  border-top: 1px solid #2e7eff;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding-top: 10px;
+}
+#main button{
+  margin: 2px auto;
+  padding: 5px 0px;
+  color: #2e7eff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*end main div*/
+
+
+/*start - footer*/
+html, body {
+    height: 100%;
+  } 
+  #container {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+  }
+  #main {
+    flex: 1;
+    /* overflow: auto; */
+  }
+  #footer {
+    background-color: transparent;
+    height: 60px;
+    clear: both;
+    text-align: center;
+    border-top: 1px solid rgb(184, 184, 184);
+  }
+  
+  .footer p {
+    padding-top: 20px;
+    color: #2e7eff;
+    font-size: small;
+    text-align: center;
+  }
+/*end - footer*/

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change email address</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/auth.css">
+</head>
+<body>
+    <div class="box">
+        <div class="form">
+            <form id="updateForm">
+                <div class="inputbox">
+                    <input type="email" value="" id="email">
+                    <span>New email address</span>
+                </div>
+                <center><input type="submit" value="Update" class="sub" id="update"></center>
+            </form>
+            <br>
+            <center><p><a href="dashboard.html">Return to dashboard</a></p></center>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import the necessary Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, updateEmail, sendEmailVerification, signOut } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+        import { getFirestore, doc, updateDoc, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAPb9NizAmyshhglpk1NombXSFgdfaQ2vg",
+            authDomain: "eprogress-account-database.firebaseapp.com",
+            projectId: "eprogress-account-database",
+            storageBucket: "eprogress-account-database.appspot.com",
+            messagingSenderId: "72882320286",
+            appId: "1:72882320286:web:822235eb2be05e86b61c8f"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        // Get a reference to the authentication service
+        const auth = getAuth(app);
+        // Get a reference to the Firestore instance
+        const db = getFirestore(app);
+
+        // Function to check if the user is logged in
+        function checkUserLoggedIn() {
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    // User is logged in, proceed with the update
+                    document.getElementById("updateForm").style.display = "block"; // Show the update form
+                } else {
+                    // User is not logged in, redirect to the login page
+                    window.location.href = "login_username.html";
+                }
+            });
+        }
+
+        // Check if the user is logged in when the script is loaded
+        checkUserLoggedIn();
+
+        // Function to update the user's email address
+        async function updateEmailAddress(email) {
+            const user = auth.currentUser;
+            try {
+                // Update email address in Firebase Authentication
+                await updateEmail(user, email);
+
+                // Send email verification link
+                await sendEmailVerification(user);
+
+                return true; // Email update successful
+            } catch (error) {
+                console.error(error);
+                alert("Error updating email address: " + error.message);
+                return false; // Email update failed
+            }
+        }
+
+        document.getElementById("updateForm").addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+
+            // Check if the email is not empty
+            if (email.trim() === "") {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Update the email address
+            const updateSuccess = await updateEmailAddress(email);
+            if (updateSuccess) {
+                alert("Update successful. A verification email has been sent to the new email address.");
+
+                // Log out the user after email update (even if not verified yet)
+                await signOut();
+
+                // Redirect to the dashboard page or login page, whichever you prefer
+                window.location.href = "dashboard.html";
+            }
+        });
+    </script>
+</body>
+</html>

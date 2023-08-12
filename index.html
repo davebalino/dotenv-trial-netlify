@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>html-10 Sign up</title>
+    <title>Home</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/video.css">
 </head>
 <body>
-    <div class="box">
-        <div class="form">
-            <h2>Sign up</h2>
-            <form>
-                <div class="inputbox"><input type="email" value="" id="email" required><span> E-mail</span></div>
-                <div class="inputbox"><input type="password" value="" id="password" required><span> Password</span></div>
-                <div class="inputbox"><input type="password" value="" id="confirmPassword" required><span> Confirm Password</span></div>
-                <input type="submit" value="Sign Up" class="sub" id="submit">
-            </form>
+
+<div id="container">
+
+    <div class="menuheader">
+        <nav class="nav">
+            <div class="logo">
+                <h1>iModule <span>[alpha]</span></h1>
+            </div>
+            <ul class="menu">
+                <li class="nav-item">
+                    <button>Homepage</button>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+<div id="main">
+
+    <div class="text">
+        <header>
+            <h1>iModule</h1>
+        </header>
+        <p>
+            <span>iModule</span> is a self-paced interactive course module for website and mobile application. 
+        </p>
+        <button id="know-more-button"><div class="arrow-down"></div></button>
+        <div id="know-more" class="hidden-content">
+            <p>
+                The 'i' in iModule represents its emphasis on interactivity, fostering engaging and participatory learning experiences.
+            </p>
+            <p>
+                Learners can progress through the courses at their own pace, making it a flexible and convenient platform for acquiring knowledge and skills. With its user-friendly interface and accessibility on various devices. 
+            </p>
+            <p>
+                iModule empowers learners to explore a diverse range of lessons while enjoying an enriching educational journey.
+            </p>
         </div>
     </div>
-    <script src="./js/index.js" type="module"></script>
+                <br>
+    <div>
+        <ul class="shortcut">
+            <li class="nav-item">
+                <a href="./html/signin.html">Sign in</a><a href="./html/signup.html">Sign up</a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <footer id="footer" class="footer">
+    <p>Created by Dave Balino &copy; 2023</p>
+    </footer>
+
+    <!-- <video class="background-video" loop muted>
+        <source src="./video/iphone.mp4" type="video/mp4">
+    </video> -->
+    <video class="background-video" loop muted>
+        <source src="./video/notebook.mp4" type="video/mp4">
+    </video>
+</div>
+    <script src="js/index.js"></script>
 </body>
 </html>

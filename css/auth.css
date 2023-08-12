@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-color: white;
+}
+.box {
+    padding: 15px 15px;
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #2d2d2d;
+}
+.box .form {
+    padding: 15px 15px;
+}
+.box .form h2 {
+    text-align: center;
+    color: #2d2d2d;
+    /* text-transform: uppercase; */
+}
+.box .form form {
+    margin-top: 35px;
+    align-items: center;
+}
+.box .form form .inputbox input {
+    padding: 10px 10px;
+    width: 240px;
+    border: none;
+    outline: none;
+    background: none;
+    border: 1px solid #2e7eff;
+    border-radius: 5px;
+    margin-bottom: 35px;
+    color: #2d2d2d;
+    font-weight: bold;
+}
+.box .form form .inputbox span {
+    position: absolute;
+    transform: translateY(-100px);
+    font-size: 14px;
+    color: #2d2d2d;
+}
+.box .form .inputbox a { /*Forgot password?*/
+    font-size: 14px;
+    color: #2e7eff;
+    display: block; /* or inline-block | needed to move <a> upward*/
+    transform: translateY(-30px);
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+.box .form form .sub {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: #2e7eff;
+    cursor: pointer;
+    font-size: 16px;
+}
+.box .form p a { /*Username/Email Sign in/ Sign up*/
+    line-height: 2rem;
+    color: #2e7eff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+}
+

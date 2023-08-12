@@ -1,42 +1,40 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { createUserWithEmailAndPassword, sendEmailVerification, getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID } from './api.js';
+const button = document.getElementById('know-more-button');
+const hiddenDiv = document.getElementById('know-more');
 
-// Your web app's Firebase configuration html-10 save 3
-const firebaseConfig = { apiKey: API_KEY, authDomain: AUTH_DOMAIN, projectId: PROJECT_ID, storageBucket: STORAGE_BUCKET, messagingSenderId: MESSAGING_SENDER_ID, appId: APP_ID };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Function to handle form submission
-document.getElementById("submit").addEventListener('click', function(e) {
-    e.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    // Perform user registration here
-    createUserWithEmailAndPassword(getAuth(app), email, password)
-        .then((userCredential) => {
-            // User account created successfully
-            const user = userCredential.user;
-
-            // Send email verification
-            sendEmailVerification(user)
-                .then(() => {
-                    alert("Sign Up successful. Please check your email for verification.");
-
-                    // Redirect to sign-in page on successful sign-up
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Sign Up successful, but failed to send verification email.");
-                });
-        })
-        .catch((error) => {
-            console.error(error);
-            alert("Error signing up: " + error.message);
-        });
+button.addEventListener('click', () => {
+    hiddenDiv.classList.toggle('visible-content')
+    if(hiddenDiv.classList.contains('visible-content')) {
+        button.innerHTML = '<div class="arrow-up"></div>';
+    } else {
+        button.innerHTML = '<div class="arrow-down"></div>';
+    }
 });
+
+
+//Video script
+// Get the video elements
+const videos = document.querySelectorAll(".background-video");
+
+// Function to play the videos in sequence
+function playVideosInSequence(index) {
+    if (index >= videos.length) {
+        // If index is greater than or equal to the number of videos, reset to the first video
+        index = 0;
+    }
+
+    // Play the video at the specified index
+    videos[index].play();
+
+    // Pause the previous video (if any)
+    if (index > 0) {
+        videos[index - 1].pause();
+    }
+
+    // Set up the next video to play after the current video ends
+    videos[index].addEventListener("ended", function () {
+        playVideosInSequence(index + 1);
+    });
+}
+
+// Start playing the videos from the first one
+playVideosInSequence(0);
