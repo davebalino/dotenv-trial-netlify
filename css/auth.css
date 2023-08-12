@@ -53,8 +53,16 @@ body {
     background: transparent;
     cursor: pointer;
 }
-.box .form form .sub {
-    padding: 10px 20px;
+.button-text {
+    padding-bottom: 2px;
+}
+.button {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    width: 240px;
+    border: none;
+    outline: none;
     color: #fff;
     border: none;
     outline: none;
@@ -62,6 +70,8 @@ body {
     background: #2e7eff;
     cursor: pointer;
     font-size: 16px;
+    justify-content: center;
+    align-items: center;
 }
 .box .form p a { /*Username/Email Sign in/ Sign up*/
     line-height: 2rem;
@@ -73,4 +83,23 @@ body {
     cursor: pointer;
     font-size: 14px;
 }
+
+/*Rotating loader - Signing up*/
+.loader {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    animation: spin 1s linear infinite;
+    margin: 0px 5px;
+    display: none;
+    transform: translateY(10px); /* Move the loader 2 pixels up to fine-tune the position */
+    z-index: 1;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 

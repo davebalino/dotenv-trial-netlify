@@ -15,6 +15,13 @@ document.getElementById("submit").addEventListener('click', function(e) {
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const signUpButton = document.querySelector(".button-text"); // Select the button-text element //Rotating loader - Signing up
+    const loader = document.getElementById("loader"); //Rotating loader - Signing up
+
+            // Show loader and change button text
+            signUpButton.disabled = true; //Rotating loader - Signing up
+            signUpButton.textContent = "Signing up..."; //Rotating loader - Signing up
+            loader.style.display = "block"; //Rotating loader - Signing up
 
     // Perform user registration here
     createUserWithEmailAndPassword(getAuth(app), email, password)
@@ -34,9 +41,19 @@ document.getElementById("submit").addEventListener('click', function(e) {
                     console.error(error);
                     alert("Sign Up successful, but failed to send verification email.");
                 });
+            // Hide loader and reset button text
+            signUpButton.disabled = false; //Rotating loader - Signing up
+            signUpButton.textContent = "Sign up"; //Rotating loader - Signing up
+            loader.style.display = "none"; //Rotating loader - Signing up
         })
         .catch((error) => {
             console.error(error);
             alert("Error signing up: " + error.message);
+
+            // Hide loader and reset button text
+            signUpButton.disabled = false; //Rotating loader - Signing up
+            signUpButton.textContent = "Sign up"; //Rotating loader - Signing up
+            loader.style.display = "none"; //Rotating loader - Signing up
         });
+        
 });
