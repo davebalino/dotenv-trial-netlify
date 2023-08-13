@@ -15,14 +15,21 @@ document.getElementById("submit").addEventListener('click', function(e) {
 
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
     const signUpButton = document.querySelector(".button-text"); // Select the button-text element //Rotating loader - Signing up
     const loader = document.getElementById("loader"); //Rotating loader - Signing up
     const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
 
-            // Show loader and change button text
-            signUpButton.disabled = true; //Rotating loader - Signing up
-            signUpButton.textContent = "Signing up..."; //Rotating loader - Signing up
-            loader.style.display = "block"; //Rotating loader - Signing up
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match. Please make sure both passwords match.");
+            return;
+        }
+
+        // Show loader and change button text
+        signUpButton.disabled = true; //Rotating loader - Signing up
+        signUpButton.textContent = "Signing up..."; //Rotating loader - Signing up
+        loader.style.display = "block"; //Rotating loader - Signing up
 
     // Perform user registration here
     createUserWithEmailAndPassword(getAuth(app), email, password)
@@ -35,15 +42,10 @@ document.getElementById("submit").addEventListener('click', function(e) {
                 .then(() => {
                     alert("Sign Up successful. Please check your email for verification.");
 
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Sign Up successful, but failed to send verification email.");
-                });
-
             // Clear form fields after successful sign-up
             document.getElementById("email").value = "";
             document.getElementById("password").value = "";
+            document.getElementById("confirmPassword").value = "";
 
             // Uncheck the "Show password" checkbox
             showPasswordCheckbox.checked = false;
@@ -57,16 +59,21 @@ document.getElementById("submit").addEventListener('click', function(e) {
             // Delay before redirecting to signin.html
             setTimeout(() => {
                 window.location.href = "signin.html";
-            }, 2000); // 1000 milliseconds = 1 second
+            }, 1000); // 1000 milliseconds = 1 second
         })
         .catch((error) => {
             console.error(error);
-            alert("Error signing up: " + error.message);
-
-            // Hide loader and reset button text
-            signUpButton.disabled = false; //Rotating loader - Signing up
-            signUpButton.textContent = "Sign up"; //Rotating loader - Signing up
-            loader.style.display = "none"; //Rotating loader - Signing up
+            alert("Sign Up successful, but failed to send verification email.");
         });
+    })
+    .catch((error) => {
+        console.error(error);
+        alert("Error signing up: " + error.message);
+
+        // Hide loader and reset button text
+        signUpButton.disabled = false; //Rotating loader - Signing up
+        signUpButton.textContent = "Sign up"; //Rotating loader - Signing up
+        loader.style.display = "none"; //Rotating loader - Signing up
+    });
         
 });

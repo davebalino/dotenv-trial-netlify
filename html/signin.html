@@ -10,16 +10,19 @@
     <div class="box">
         <div class="form">
             <h2>Sign in</h2>
-            <form>
-                <div class="inputbox"><input type="email" id="email" placeholder="example@email.com"><span>Email</span></div>
-                <div class="inputbox"><input type="password" id="password"><span>Password</span></div>
-                
-                <div class="inputbox"><a href="pass_recovery.html">Forgot password?</a></div>
-
-                <input type="submit" value="Sign in" class="sub" id="loginBtn">
-            </form>
-            <br>
-            <p><a href="signup.html">Sign up</a></p>
+                <div class="inputbox">
+                    <p>Email</p>
+                    <input class="input" type="email" id="email" placeholder="example@email.com">
+                </div>
+                <div class="inputbox">
+                    <p>Password</p>
+                    <input class="input last" type="password" id="password">
+                </div>
+                <a href="pass_recovery.html">Forgot password?</a>
+                <button class="button" id="loginBtn">
+                    <div class="loader" id="loader"></div><div class="button-text">Sign in</div>
+                </button>
+                <a href="signup.html">Sign up</a>
         </div>
     </div>
     <script type="module">
