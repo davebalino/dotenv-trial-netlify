@@ -17,6 +17,7 @@ document.getElementById("submit").addEventListener('click', function(e) {
     const password = document.getElementById("password").value;
     const signUpButton = document.querySelector(".button-text"); // Select the button-text element //Rotating loader - Signing up
     const loader = document.getElementById("loader"); //Rotating loader - Signing up
+    const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
 
             // Show loader and change button text
             signUpButton.disabled = true; //Rotating loader - Signing up
@@ -34,17 +35,29 @@ document.getElementById("submit").addEventListener('click', function(e) {
                 .then(() => {
                     alert("Sign Up successful. Please check your email for verification.");
 
-                    // Redirect to sign-in page on successful sign-up
-                    window.location.href = "signin.html";
                 })
                 .catch((error) => {
                     console.error(error);
                     alert("Sign Up successful, but failed to send verification email.");
                 });
+
+            // Clear form fields after successful sign-up
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            // Uncheck the "Show password" checkbox
+            showPasswordCheckbox.checked = false;
+            
             // Hide loader and reset button text
             signUpButton.disabled = false; //Rotating loader - Signing up
             signUpButton.textContent = "Sign up"; //Rotating loader - Signing up
             loader.style.display = "none"; //Rotating loader - Signing up
+
+            // Redirect to sign-in page on successful sign-up
+            // Delay before redirecting to signin.html
+            setTimeout(() => {
+                window.location.href = "signin.html";
+            }, 2000); // 1000 milliseconds = 1 second
         })
         .catch((error) => {
             console.error(error);

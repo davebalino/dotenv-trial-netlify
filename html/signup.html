@@ -6,25 +6,33 @@
     <link rel="stylesheet" type="text/css" href="../css/all.css">
     <link rel="stylesheet" type="text/css" href="../css/auth.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="../js/show-pass.js" type="module"></script>
 </head>
 <body>
     <div class="box">
         <div class="form">
             <h2>Sign up</h2>
-            <form>
-                <div class="inputbox"><input type="email" value="" id="email" required><span> E-mail</span></div>
-                <div class="inputbox"><input type="password" value="" id="password" required><span> Password</span></div>
-                <div class="inputbox"><input type="password" value="" id="confirmPassword" required><span> Confirm Password</span></div>
-                <!-- <div class="loader-container">
-                    <div class="loader" id="loader"></div>
-                    <input type="submit" class="sub" value="Sign up" id="submit">
-                </div> -->
-                    <button class="button" id="submit">
-                        <div class="loader" id="loader"></div><div class="button-text">Sign up</div>
-                    </button>
-            </form>
-            <br>
-            <p><a href="signin.html">Sign in</a></p>
+            <div class="inputbox">
+                <p> E-mail</p>
+                <input class="input" type="email" value="" id="email" required>
+            </div>
+            <div class="inputbox">
+                <p> Password</p>
+                <input class="input" type="password" value="" id="password" required>
+            </div>
+            <div class="inputbox">
+                <p>Confirm Password</p>
+                <input class="input last" type="password" value="" id="confirmPassword" required>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" name="myCheckbox" value="unchecked" id="showPasswordCheckbox" unchecked>
+                <label>Show password</label>
+            </div>
+            
+            <button class="button" id="submit">
+                <div class="loader" id="loader"></div><div class="button-text">Sign up</div>
+            </button>
+            <a href="signin.html">Sign in</a>
         </div>
     </div>
     <script src="../js/signup.js" type="module"></script>
