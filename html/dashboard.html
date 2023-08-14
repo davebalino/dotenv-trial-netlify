@@ -30,6 +30,7 @@
             <div class="avatar"><img src="../img/avatar.png"></div> <!-- Add your initials or content here -->
             <h2>My Profile Account</h2>
             <p>Email: <span id="email"></span></p>
+            <p>User UID: <span id="uid"></span></p>
             <p>Name: <span id="fullname"></span></p>
             <p>Middle Name: <span id="middlename"></span></p>
             <p>Phone Number: <span id="phonenumber"></span></p>
@@ -74,11 +75,17 @@
         // Check if a user is already signed in
         onAuthStateChanged(auth, async (user) => {
             if (user) {
-                // User is signed in, update the welcome message
-                document.getElementById("email").textContent = user.displayName; // Display the display name
-                document.getElementById("email").textContent = user.email;
+        // User is signed in, update the welcome message
+            document.getElementById("email").textContent = user.email; // Display the email
+            // document.getElementById("uid").textContent = user.uid; // Display the full UID
 
-            // Helper function to capitalize all letters of a name
+            // Display only the first 20 characters of the UID
+            const truncatedUID = user.uid.substring(0, 20) + "...";
+            document.getElementById("uid").textContent = truncatedUID;
+
+        //
+
+        // Helper function to capitalize all letters of a name
             const capitalizeAllLetters = (name) => name.trim().toUpperCase();
 
                 // Retrieve additional user data from Firestore
