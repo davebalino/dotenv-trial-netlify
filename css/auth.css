@@ -8,7 +8,7 @@ body {
 .box {
     padding: 25px 20px;
     border-radius: 5px;
-    border: 1px solid #2d2d2d;
+    border: 1px solid #2e7eff;
 }
 .form h2 {
     margin-bottom: 20px;
@@ -49,16 +49,6 @@ body {
     font-size: 12px;
     color: #2d2d2d;
 }
-.inputbox a { /*Forgot password?*/
-    font-size: 14px;
-    color: #2e7eff;
-    display: block; /* or inline-block | needed to move <a> upward*/
-    /* transform: translateY(-30px); */
-    border: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-}
 .button-text {
     padding-bottom: 2px;
 }
@@ -68,16 +58,12 @@ body {
     padding: 10px 10px;
     width: 240px;
     border: none;
-    outline: none;
     color: #fff;
-    border: none;
-    outline: none;
     border-radius: 5px;
     background: #2e7eff;
     cursor: pointer;
     font-size: 16px;
     justify-content: center;
-    align-items: center;
 }
 .form {
     display: flex;
