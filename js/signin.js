@@ -8,17 +8,6 @@ const firebaseConfig = { apiKey: API_KEY, authDomain: AUTH_DOMAIN, projectId: PR
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Add event listener to checkbox
-const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
-const passwordInput = document.getElementById("password");
-
-showPasswordCheckbox.addEventListener("change", function() {
-    if (this.checked) {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-});
 
 document.getElementById("loginBtn").addEventListener('click', function(e) {
     e.preventDefault();
