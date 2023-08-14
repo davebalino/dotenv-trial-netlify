@@ -6,7 +6,7 @@ body {
     background-color: white;
 }
 .box {
-    padding: 25px 20px 10px 20px;
+    padding: 25px 20px;
     border-radius: 5px;
     border: 1px solid #2d2d2d;
 }
@@ -28,29 +28,32 @@ body {
     font-weight: bold;
 }
 .input.last {
-    margin-bottom: 0px;
+    margin-bottom: 25px;
 }
 .inputbox p {
-    margin: 3px 0px;
-    font-size: 14px;
+    margin: 3px 0px 5px 3px;
+    font-size: 12px;
     color: #2d2d2d;
 }
-.checkbox {
-    margin: 15px auto;
+.flex-row {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.checkbox {
+    display: flex;
+    flex-direction: row;
 }
 .checkbox label {
-    margin: 0px 0px 2px 5px;
-    font-size: 14px;
+    margin: 3px 3px 5px 3px;
+    font-size: 12px;
     color: #2d2d2d;
 }
 .inputbox a { /*Forgot password?*/
     font-size: 14px;
     color: #2e7eff;
     display: block; /* or inline-block | needed to move <a> upward*/
-    transform: translateY(-30px);
+    /* transform: translateY(-30px); */
     border: none;
     outline: none;
     background: transparent;
@@ -82,7 +85,8 @@ body {
     align-items: center; /* Center horizontally */
 }
 .form a { /*Username/Email Sign in/ Sign up*/
-    margin: 20px auto;
+    margin: 0px auto;
+    margin-top: 20px;
     color: #2e7eff;
     background: transparent;
     cursor: pointer;

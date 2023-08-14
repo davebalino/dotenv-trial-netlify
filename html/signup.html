@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>html-10 Sign up</title>
+    <title>Sign up</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="../css/all.css">
     <link rel="stylesheet" type="text/css" href="../css/auth.css">
@@ -17,16 +17,18 @@
                 <input class="input" type="email" value="" id="email" required>
             </div>
             <div class="inputbox">
-                <p> Password</p>
+                <div class="flex-row">
+                    <p> Password</p>
+                    <div class="checkbox">
+                        <input type="checkbox" name="myCheckbox" value="unchecked" id="showPasswordCheckbox" unchecked>
+                        <label>Show password</label>
+                    </div>
+                </div>
                 <input class="input" type="password" value="" id="password" required>
             </div>
             <div class="inputbox">
                 <p>Confirm password</p>
                 <input class="input last" type="password" value="" id="confirmPassword" required>
-            </div>
-            <div class="checkbox">
-                <input type="checkbox" name="myCheckbox" value="unchecked" id="showPasswordCheckbox" unchecked>
-                <label>Show password</label>
             </div>
             <button class="button" id="submit">
                 <div class="loader" id="loader"></div><div class="button-text">Sign up</div>

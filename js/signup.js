@@ -16,7 +16,7 @@ document.getElementById("submit").addEventListener('click', function(e) {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
-    const signUpButton = document.querySelector(".button-text"); // Select the button-text element //Rotating loader - Signing up
+    const signUpButton = document.querySelector(".button-text"); //Rotating loader - Signing up
     const loader = document.getElementById("loader"); //Rotating loader - Signing up
     const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
 

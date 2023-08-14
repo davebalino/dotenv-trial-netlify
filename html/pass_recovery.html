@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Password Recovery</title>
+    <title>Password reset</title>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/all.css">
-    <link rel="stylesheet" type="text/css" href="css/auth.css">
+    <link rel="stylesheet" type="text/css" href="../css/all.css">
+    <link rel="stylesheet" type="text/css" href="../css/auth.css">
 </head>
 <body>
     <div class="box">
         <div class="form">
-            <h2>Password Reset</h2>
+            <h2>Password reset</h2>
             <form>
-                <div class="inputbox"><input type="email" id="email" required><span>Email</span></div>
-                <center><input type="submit" value="Send Reset Link" class="sub" id="resetPasswordBtn"></center>
+                <div class="inputbox">
+                    <p>Email</p>
+                    <input class="input" type="email" id="email" required>
+                </div>
+                <br>
+                <button class="button" id="resetPasswordBtn">
+                    <div class="loader" id="loader"></div><div class="button-text">Send reset link</div>
+                </button>
             </form>
-            <br>
-            <center><p><a href="index.html">Back to sign in</a></p></center>
+            <a href="signin.html">Back to sign in</a>
         </div>
     </div>
     <script type="module">

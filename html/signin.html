@@ -15,13 +15,19 @@
                     <input class="input" type="email" id="email" placeholder="example@email.com">
                 </div>
                 <div class="inputbox">
-                    <p>Password</p>
+                    <div class="flex-row">
+                        <p>Password</p>
+                        <div class="checkbox">
+                            <input type="checkbox" name="myCheckbox" value="unchecked" id="showPasswordCheckbox" unchecked>
+                            <label>Show password</label>
+                        </div>
+                    </div>
                     <input class="input last" type="password" id="password">
                 </div>
-                <a href="pass_recovery.html">Forgot password?</a>
                 <button class="button" id="loginBtn">
                     <div class="loader" id="loader"></div><div class="button-text">Sign in</div>
                 </button>
+                <a href="pass_recovery.html">Forgot password?</a>
                 <a href="signup.html">Sign up</a>
         </div>
     </div>
