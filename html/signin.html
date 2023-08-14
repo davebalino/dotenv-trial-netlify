@@ -18,7 +18,7 @@
                     <div class="flex-row">
                         <p>Password</p>
                         <div class="checkbox">
-                            <input type="checkbox" name="myCheckbox" value="unchecked" id="showPasswordCheckbox" unchecked>
+                            <input type="checkbox" name="myCheckbox" value="checked" id="showPasswordCheckbox">
                             <label>Show password</label>
                         </div>
                     </div>
@@ -48,22 +48,51 @@
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        // Add event listener to checkbox
+        const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+        const passwordInput = document.getElementById("password");
+
+        showPasswordCheckbox.addEventListener("change", function() {
+            if (this.checked) {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        });
 
         document.getElementById("loginBtn").addEventListener('click', function(e) {
             e.preventDefault();
 
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
-
+            const signUpButton = document.querySelector(".button-text"); //Rotating loader - Signing up
+            const loader = document.getElementById("loader"); //Rotating loader - Signing up
             const auth = getAuth(app);
+
+            // Show loader and change button text
+            signUpButton.disabled = true; //Rotating loader - Signing up
+            signUpButton.textContent = "Signing in..."; //Rotating loader - Signing up
+            loader.style.display = "block"; //Rotating loader - Signing up
 
             // Sign in with email and password
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    const user = userCredential.user;
+                    const user = userCredential.user;                    
                     if (user.emailVerified) {
                         // Successful login
-                        window.location.href = "dashboard.html"; // Redirect to the dashboard page after login
+
+                        // Clear form fields after successful sign-up
+                        document.getElementById("password").value = "";
+
+                        // Uncheck the "Show password" checkbox
+                        showPasswordCheckbox.checked = false;
+
+                        // Redirect to sign-in page on successful sign-up
+                        // Delay before redirecting to signin.html
+                        setTimeout(() => {
+                            window.location.href = "dashboard.html";
+                        }, 1000); // 1000 milliseconds
+
                     } else {
                         // Display confirmation dialog to resend verification email
                         const resendConfirmation = window.confirm("Please verify your email before logging in. Would you like to resend the verification email?");
@@ -84,6 +113,11 @@
                 .catch((error) => {
                     console.error(error);
                     alert("Error signing in: " + error.message);
+
+                    // Hide loader and reset button text
+                    signUpButton.disabled = false; //Rotating loader - Signing up
+                    signUpButton.textContent = "Sign in"; //Rotating loader - Signing up
+                    loader.style.display = "none"; //Rotating loader - Signing up
                 });
         });
 
